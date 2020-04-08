@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patient Registration Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            textarea{
+                resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h2 style="text-align: center;">Please fill out the form.</h2>
+                <hr/>
+            </div>
+            <form method="post" action="{% url 'accounts:registration' %}">{% csrf_token %}
+            <div class="table-responsive" style="border: 0.5px solid orange;">          
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td  style="text-align: left;">Todays date <input type="date" name="date"  class="form-control" required/></td>
+                            <td   style="text-align: left;">Clinic Name <input type="text" name="clinic"  class="form-control" required/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <h3 style="color: coral;padding: left 2px;">&nbsp; PATIENT INFORMATION:</h3> 
+            <div class="table-responsive" style="border: 0.5px solid orange;"> 
+                        
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td  >Last Name <input type="text" name="lname" style="width: 100%;" class="form-control" required/></td>
+                            <td  >First Name <input type="text" name="fname" style="width: 100%;" class="form-control" required/></td>
+                            <td  >Middle Name <input type="text" name="mname" style="width: 100%;" class="form-control" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td  colspan="3"  >Address &nbsp; <textarea name="address" class="form-control" rows="4" id="comment" ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td  >City <select class="form-control" name="city">
+                                <option value="hyderabad">
+                                    Hyderabad
+                                </option>
+                                <option value="Warangal">
+                                    Warangal
+                                </option>
+                            </select></td>
+                            <td  >State <select class="form-control" name="state">
+                                <option value="telangana">
+                                    Telangana
+                                </option>
+                                <option value="andhra pradesh">
+                                    Andhra Pradesh
+                                </option>
+                            </select></td>
+                            <td  >Zip <input type="number" name="zip" style="width: 100%;" class="form-control" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td  style="text-align: left;">Home phone<input type="number" name="phone" style="width: 100%;" class="form-control" required/></td>
+                            <td colspan="2"  style="text-align: left;">Social Security <input type="text" name="ssecurity" style="width: 100%;" class="form-control" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td  >Date Of Birth
+                                <input type="date" name="dob" class="form-control" required/>
+                            </td>
+                            <td  >Age
+                                <input type="number" name="age" class="form-control" required/>
+                            </td>
+
+                            <td  >Gender<select class="form-control" name="gender">
+                                <option value="male">
+                                    Male
+                                </option>
+                                <option value="female">
+                                    Female
+                                </option>
+                                <option value="other">
+                                   Other
+                                </option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Marital Status<select class="form-control" name="mstatus">
+                                    <option value="single">
+                                        Single
+                                    </option>
+                                    <option value="married">
+                                        Married
+                                    </option>
+                                    <option value="widow">
+                                    Widow
+                                    </option>
+                            </select>
+                            </td>
+                            <td  >Driving License
+                                <input type="text" name="dlicense" class="form-control" required/>
+                            </td>
+                            <td  >Work Phone Num
+                                <input type="number" name="wphone" class="form-control" required/>
+                            </td>
+                        </tr>
+
+                       
+                        <tr>
+                            <td  colspan="3"  >Employer Name & Address &nbsp; <textarea name="ena" class="form-control" rows="3" id="comment" ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Email<input type="email" name="email" class="form-control" required/></td>
+                            <td>Emergency Contact Name<input type="text" name="eca" class="form-control" required/></td>
+                            <td>Emergency Contact Address<input type="text" name="ecd" class="form-control" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br/>
+            <div class="table-responsive" style="border: 0.5px solid orange;">          
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td  style="text-align: left;">Please tell us how you heard about us <input type="text" name="heardby"  class="form-control" required/></td>
+                            <td  style="text-align: left;">Referred by <input type="text" name="refferedby" class="form-control" required/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <h3 style="color: coral;padding: left 2px;">&nbsp; GUARANTOR INFORMATION:</h3> 
+            <div class="table-responsive" style="border: 0.5px solid orange;"> 
+                        
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td colspan="3"> Relationship of GUARANTOR to PATIENT
+                                <label class="radio-inline"><input type="radio" name="optradio" value="self"checked>Self</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="spouse">Spouse</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="parent">Parent</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="other">Other</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  >Last Name <input type="text" name="glname" style="width: 100%;" class="form-control" required/></td>
+                            <td  >First Name <input type="text" name="gfname" style="width: 100%;" class="form-control" required/></td>
+                            <td  >Middle Name <input type="text" name="gmname" style="width: 100%;" class="form-control" required/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td  colspan="3"  >Address &nbsp; <textarea name="gaddress" class="form-control" rows="4" id="comment" ></textarea></td>
+                        </tr>
+
+                        
+                        <tr>
+                            <td  >City <select class="form-control" name="gcity">
+                                <option value="hyderabad">
+                                    Hyderabad
+                                </option>
+                                <option value="Warangal">
+                                    Warangal
+                                </option>
+                            </select></td>
+                            <td  >State <select class="form-control" name="gstate">
+                                <option value="telangana">
+                                    Telangana
+                                </option>
+                                <option value="andhra pradesh">
+                                    Andhra Pradesh
+                                </option>
+                            </select></td>
+                            <td  >Zip <input type="number" name="gzip" style="width: 100%;" class="form-control" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td  style="text-align: left;">Home phone<input type="number" name="gphone" style="width: 100%;" class="form-control" required/></td>
+                            <td colspan="2"  style="text-align: left;">Social Security <input type="text" name="gssecurity" style="width: 100%;" class="form-control" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td  >Date Of Birth
+                                <input type="date" name="gdob" class="form-control" required/>
+                            </td>
+                            <td  >Age
+                                <input type="number" name="gage" class="form-control" required/>
+                            </td>
+
+                            <td  >Gender<select class="form-control" name="ggender">
+                                <option value="male">
+                                    Male
+                                </option>
+                                <option value="female">
+                                    Female
+                                </option>
+                                <option value="other">
+                                   Other
+                                </option>
+                            </select>
+                        </td>
+                        </tr>
+                        
+
+                       
+                        <tr>
+                            <td  colspan="3"  >Employer Name & Address &nbsp; <textarea name="gena" class="form-control" rows="3" id="comment" ></textarea></td>
+                        </tr>
+                      
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div style="text-align: center;" ><input  type="submit" value="submit" class="btn btn-primary"/></div>
+            </form>
+        </div>
+    </body>
+</html>
