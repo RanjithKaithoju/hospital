@@ -2,7 +2,7 @@ argon2-cffi==19.2.0
 asgiref==3.2.4
 bcrypt==3.1.7
 cffi==1.14.0
-Django==3.0.4
+Django==4.2.22
 djangorestframework==3.11.0
 Faker==4.0.2
 Pillow==7.1.1
